@@ -14,7 +14,7 @@ import com.squareup.okhttp.Request;
 import com.squareup.okhttp.Response;
 
 /**
- * 解析请求结果
+ * 请求器
  * @author zhuogg
  * 2016-3-17
  */
@@ -54,6 +54,11 @@ public class JsonRequester {
 		}
 	}
 	
+	/**
+	 * 请求并获取一下url的内容
+	 * @param url
+	 * @return
+	 */
 	public String getContent(String url) {
 		prehandle();
 		OkHttpClient client=new OkHttpClient();

@@ -27,13 +27,14 @@ public class LaGou extends JsonRunner{
 	@SuppressWarnings("rawtypes")
 	@Override
 	protected void onHandle(Map raw) {
-//		 System.out.println(raw);
+		
 		Tag.getTag((String) raw.get("positionType")).addNum( (String) raw.get("workYear")+","+(String) raw.get("salary"));
 	}
 
 	@Override
 	protected void onInit(JsonRequester mRequester, JsonFetcher mFetcher,
 			JsonParser mParser) {
+		//请求设置
 		mRequester.addMapping("Connection","keep-alive");
 		mRequester.addMapping("Pragma","no-cache");
 		mRequester.addMapping("Cache-Control","no-cache");
@@ -43,20 +44,22 @@ public class LaGou extends JsonRunner{
 		mRequester.addMapping("Accept-Encoding","gzip, deflate, sdch");
 		mRequester.addMapping("Accept-Language","zh-CN,zh;q=0.8");
 		
+		//分页信息设置
 		mFetcher.addMapping(JsonFetcher.OK, "code == 0" );
 		mFetcher.addMapping(JsonFetcher.PAGE_NO, "content.pageNo"  );
 		mFetcher.addMapping(JsonFetcher.OPT_PAGE_SIZE, "content.pageSize");
 		mFetcher.addMapping(JsonFetcher.OPT_PAGE_SIZE, "content.pageCount" );
 		mFetcher.addMapping(JsonFetcher.ROWS, "content.result" );
 		
-//		mParser.addMapping("companyId", "companyId");
+		//列表项映射： 结果（onHandle的参数）列名  -> 用ognl表达式从返回的json提取信息 （onHandle里返回map，可以通过这个作key获取值）
+		mParser.addMapping("companyId", "companyId");
 		mParser.addMapping("positionName", "positionName");
 		mParser.addMapping("positionType", "positionType");
 		mParser.addMapping("workYear", "workYear");
 		mParser.addMapping("salary", "salary");
-//		mParser.addMapping("formatCreateTime", "formatCreateTime");
-//		mParser.addMapping("positionFirstType", "positionFirstType");
-//		mParser.addMapping("companyLabelFirst", "companyLabelList.{^true}");
+		mParser.addMapping("formatCreateTime", "formatCreateTime");
+		mParser.addMapping("positionFirstType", "positionFirstType");
+		mParser.addMapping("companyLabelFirst", "companyLabelList.{^true}");
 		
 	}
 }

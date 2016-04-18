@@ -1,8 +1,10 @@
 package com.zhuogg.paged.json;
 
-
-
-
+/**
+ * 配置信息
+ * @author zhuogg
+ * 2016-4-18
+ */
 public class Config {
 	public String url;
 	private Integer pageNo;
