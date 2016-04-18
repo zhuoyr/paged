@@ -11,6 +11,7 @@
   * onHandle 处理数据，根据自己的业务逻辑来写代码喽
   
 ## 示例：拉取拉勾网的职位列表，并做分组统计
+ > 拉勾接口的json结构，见后面的附1
 	package com.zhuogg.paged;
 
 	import java.util.Map;
@@ -199,3 +200,5 @@
 			<version>1.7.7</version>
 		</dependency>
 	</dependencies>
+# 附1：拉勾接口的json结构
+![拉勾接口的json结构](https://github.com/zhuoyr/paged/blob/master/lagou.png)
